@@ -18,10 +18,11 @@ const Header = () => {
 			sx={{
 				display: 'flex',
 				flexDirection: 'row',
-				justifyContent: 'space-around',
+				justifyContent: isSmallScreen ? 'space-between' : 'space-around',
 				alignItems: 'center',
 				height: '5rem',
 				backgroundColor: 'black',
+				paddingRight: isSmallScreen ? '0.75rem' : null,
 			}}>
 			<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 				<Box sx={{ display: isSmallScreen ? 'flex' : 'none' }}>
