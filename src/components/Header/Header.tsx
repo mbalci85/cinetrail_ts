@@ -69,6 +69,10 @@ const Header = () => {
 						backgroundColor: '#E10707',
 						fontFamily: 'inherit',
 						marginLeft: '0.5rem',
+						':hover': {
+							backgroundColor: 'white',
+							color: '#E10707',
+						},
 					}}>
 					Sign In
 				</Button>
