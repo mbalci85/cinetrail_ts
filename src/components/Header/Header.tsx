@@ -5,10 +5,13 @@ import HeaderSearch from '../../forms/HeaderSearch';
 import { useContext, useState } from 'react';
 import { MediaQueryContext } from '../../contexts/MediaQueryContextProvider';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
 	const { isSmallScreen } = useContext(MediaQueryContext);
 	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+	const navigate = useNavigate();
 
 	const closeMenu = (): void => setIsMenuOpen(false);
 
@@ -32,7 +35,12 @@ const Header = () => {
 				</Box>
 				<HamburgerMenu isMenuOpen={isMenuOpen} closeMenu={closeMenu} />
 				<Box>
-					<img src={DarkLogo} alt='logo' style={{ height: isSmallScreen ? '3rem' : '4rem' }} />
+					<img
+						src={DarkLogo}
+						alt='logo'
+						style={{ height: isSmallScreen ? '3rem' : '4rem', cursor: 'pointer' }}
+						onClick={() => navigate('/')}
+					/>
 				</Box>
 				<Box>
 					{/*Create button generator*/}
