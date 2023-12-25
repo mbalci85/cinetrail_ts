@@ -1,9 +1,13 @@
 import { Box } from '@mui/material';
 
-const HomePage = () => {
-	const API_KEY = import.meta.env.VITE_API_KEY;
+import HomePageSlider from '../../components/HomePageSlider/HomePageSlider';
 
-	return <Box>HomePage</Box>;
+const HomePage = () => {
+	return (
+		<Box sx={{ overflow: 'hidden' }}>
+			<HomePageSlider />
+		</Box>
+	);
 };
 
 export default HomePage;
