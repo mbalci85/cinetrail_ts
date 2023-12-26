@@ -23,7 +23,7 @@ const Header = () => {
 				flexDirection: 'row',
 				justifyContent: isSmallScreen ? 'space-between' : 'space-around',
 				alignItems: 'center',
-				height: '5rem',
+				height: isSmallScreen ? '3.25rem' : '5rem',
 				backgroundColor: 'black',
 				paddingRight: isSmallScreen ? '0.75rem' : null,
 			}}>

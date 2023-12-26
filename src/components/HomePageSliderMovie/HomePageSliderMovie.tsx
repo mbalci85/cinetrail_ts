@@ -23,7 +23,6 @@ const HomePageSliderMovie = ({
 	const navigate = useNavigate();
 	const { isVerySmallScreen, isSmallScreen, isMediumScreen } = useContext(MediaQueryContext);
 
-	console.log(movie.vote_average / 2);
 	return (
 		<Box
 			sx={{
