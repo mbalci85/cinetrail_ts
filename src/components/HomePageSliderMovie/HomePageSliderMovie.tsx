@@ -21,7 +21,7 @@ const HomePageSliderMovie = ({
 	const movieBackdropBaseUrl = import.meta.env.VITE_BACKDROP_MOVIES_URL;
 
 	const navigate = useNavigate();
-	const { isSmallScreen } = useContext(MediaQueryContext);
+	const { isVerySmallScreen, isSmallScreen, isMediumScreen } = useContext(MediaQueryContext);
 
 	console.log(movie.vote_average / 2);
 	return (
@@ -54,7 +54,7 @@ const HomePageSliderMovie = ({
 					justifyContent: 'space-between',
 					alignItems: 'center',
 					width: '100%',
-					px: isSmallScreen ? '1rem' : '2rem',
+					px: isSmallScreen ? '1rem' : '1.5rem',
 				}}>
 				<Box sx={{ display: 'flex' }}>
 					<IconButton
@@ -65,7 +65,7 @@ const HomePageSliderMovie = ({
 								setCurrentMovieIndex(numberOfUpcomingMovies - 1);
 							}
 						}}
-						sx={{ ':hover': { fontSize: '3rem', backgroundColor: 'transparent' } }}>
+						sx={{ ':hover': { backgroundColor: 'transparent' } }}>
 						<ArrowBackIos
 							sx={{
 								color: '#E10707',
@@ -76,19 +76,29 @@ const HomePageSliderMovie = ({
 					</IconButton>
 
 					<Box sx={{ width: '35vw', zIndex: 1 }}>
-						<Typography variant={isSmallScreen ? 'body1' : 'h4'}>{movie.title}</Typography>
-						<Typography variant='body2' sx={{ display: isSmallScreen ? 'none' : null, my: '0.5rem' }}>
+						<Typography
+							variant={isSmallScreen ? 'body1' : isMediumScreen ? 'h5' : 'h4'}
+							sx={{ marginBottom: isVerySmallScreen ? '0.2rem' : '0.5rem' }}>
+							{movie.title}
+						</Typography>
+						<Typography
+							sx={{
+								display: isSmallScreen ? 'none' : null,
+								fontSize: isSmallScreen ? '0.65rem' : isMediumScreen ? '0.75rem' : '0.85rem',
+							}}>
 							{movie.overview}
 						</Typography>
-						<Typography variant={isSmallScreen ? 'body2' : 'body1'}>
+						<Typography
+							variant={isSmallScreen ? 'caption' : isMediumScreen ? 'body2' : 'body1'}
+							sx={{ marginTop: isVerySmallScreen ? '0.2rem' : '0.5rem' }}>
 							Release Date: {movie.release_date}
 						</Typography>
-
+						<br />
 						<Rating
 							value={movie.vote_average / 2}
 							precision={0.5}
 							readOnly
-							sx={{ my: '0.5rem' }}
+							sx={{ my: isVerySmallScreen ? '0.2rem' : '0.5rem' }}
 							emptyIcon={
 								<StarBorderOutlined
 									style={{ color: 'orange' }}
@@ -99,7 +109,7 @@ const HomePageSliderMovie = ({
 						/>
 						<Typography
 							variant='body2'
-							sx={{ textTransform: 'capitalize', cursor: 'pointer', width: 'auto' }}
+							sx={{ textTransform: 'capitalize', cursor: 'pointer' }}
 							onClick={() => navigate('')}>
 							See Details
 						</Typography>
@@ -114,7 +124,7 @@ const HomePageSliderMovie = ({
 								setCurrentMovieIndex(0);
 							}
 						}}
-						sx={{ ':hover': { fontSize: '3rem', backgroundColor: 'transparent' } }}>
+						sx={{ ':hover': { backgroundColor: 'transparent' } }}>
 						<ArrowForwardIos
 							sx={{
 								color: '#E10707',
