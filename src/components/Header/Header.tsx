@@ -2,7 +2,7 @@ import { Box, AppBar, IconButton, Button } from '@mui/material';
 import DarkLogo from '../../assets/DarkLogo.png';
 import { Menu } from '@mui/icons-material/';
 import HeaderSearch from '../../forms/HeaderSearch';
-import { useContext, useState } from 'react';
+import { ReactElement, useContext, useState } from 'react';
 import { MediaQueryContext } from '../../contexts/MediaQueryContextProvider';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +14,20 @@ const Header = () => {
 	const navigate = useNavigate();
 
 	const closeMenu = (): void => setIsMenuOpen(false);
+
+	const headerBtnGenerator = (btnText: string): ReactElement => (
+		<Button
+			sx={{
+				display: isSmallScreen ? 'none' : null,
+				color: '#FFFF',
+				textTransform: 'capitalize',
+				fontFamily: 'inherit',
+				fontSize: '1.15rem',
+				marginLeft: '1rem',
+			}}>
+			{btnText}
+		</Button>
+	);
 
 	return (
 		<AppBar
@@ -43,29 +57,8 @@ const Header = () => {
 					/>
 				</Box>
 				<Box>
-					{/*Create button generator*/}
-					<Button
-						sx={{
-							display: isSmallScreen ? 'none' : null,
-							color: '#FFFF',
-							textTransform: 'capitalize',
-							fontFamily: 'inherit',
-							fontSize: '1.15rem',
-							marginLeft: '1rem',
-						}}>
-						Movies
-					</Button>
-					<Button
-						sx={{
-							display: isSmallScreen ? 'none' : null,
-							color: '#FFFF',
-							textTransform: 'capitalize',
-							fontFamily: 'inherit',
-							fontSize: '1.15rem',
-							marginLeft: '1rem',
-						}}>
-						TV Shows
-					</Button>
+					{headerBtnGenerator('Movies')}
+					{headerBtnGenerator('TV Shows')}
 				</Box>
 			</Box>
 			<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
