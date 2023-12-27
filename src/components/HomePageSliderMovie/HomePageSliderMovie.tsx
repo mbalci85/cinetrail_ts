@@ -1,9 +1,10 @@
-import { Box, IconButton, Rating, Typography } from '@mui/material';
+import { Box, IconButton, Typography } from '@mui/material';
 import { Movie } from '../../interfaces/Movie';
-import { ArrowBackIos, ArrowForwardIos, StarBorderOutlined } from '@mui/icons-material';
+import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { MediaQueryContext } from '../../contexts/MediaQueryContextProvider';
+import RatingStars from '../RatingStars/RatingStars';
 
 interface MovieProps {
 	movie: Movie;
@@ -93,19 +94,7 @@ const HomePageSliderMovie = ({
 							Release Date: {movie.release_date}
 						</Typography>
 						<br />
-						<Rating
-							value={movie.vote_average / 2}
-							precision={0.5}
-							readOnly
-							sx={{ my: isVerySmallScreen ? '0.2rem' : '0.5rem' }}
-							emptyIcon={
-								<StarBorderOutlined
-									style={{ color: 'orange' }}
-									fontSize={isSmallScreen ? 'inherit' : 'medium'}
-								/>
-							}
-							size={isSmallScreen ? 'small' : 'medium'}
-						/>
+						<RatingStars rating={movie.vote_average / 2} />
 						<Typography
 							variant='body2'
 							sx={{ textTransform: 'capitalize', cursor: 'pointer' }}
